@@ -1,0 +1,28 @@
+{
+  "name": "aws-v2t-example",
+  "version": "1.0.0",
+  "description": "AWS Transcription Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lham-ss/aws-v2t-example.git"
+  },
+  "keywords": [
+    "AWS",
+    "Transcribe",
+    "WAV"
+  ],
+  "author": "Lawrence Ham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lham-ss/aws-v2t-example/issues"
+  },
+  "homepage": "https://github.com/lham-ss/aws-v2t-example#readme",
+  "dependencies": {
+    "aws-sdk": "^2.587.0",
+    "dotenv": "^8.2.0"
+  }
+}
