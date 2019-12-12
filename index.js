@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const AWS = require('aws-sdk');
 
+const shortId = require('shortid');
+
 let awsCreds = { 
     accessKeyId: process.env.AWS_ID, 
     secretAccessKey: process.env.AWS_SECRET,
@@ -54,21 +56,41 @@ let transcribeUri = async (uri) => {
         }
 
         v2t.startTranscriptionJob(params, (err, data) => {
-            if( err ) reject(err);
-            else resolve(data);
+            return (err) ? reject(err) : resolve(data);
         });
         
     });
 }
 
 async function main() {
-    let results = await uploadFileToS3Bucket('./samples/vmail_sample1.wav');
+    let ret = null;
+    
+    try {
+        ret = await uploadFileToS3Bucket('./samples/vmail_sample1.wav');
+    }
+    catch(e) {
+        return console.log(e);
+    }
 
-    console.log(results);
+    let s3Uri = ret.Location;
 
-    let text = await transcribeUri(results.Location);
+    console.log(`S3 successfully uploaded: ${s3Uri}`);
 
-    console.log(text);
+    try {
+        ret = await transcribeUri(s3Uri);
+    }
+    catch(e) {
+        console.log(e);
+    }
+
+    console.log(ret);
+    // This does not return the transcription results.
+    //
+    // Lamba Function created (in AWS) to wait for a CloudWatch event (this must also be set up)
+    // when the transcription job is complete Transcribe issues event that triggers our Lambda
+    // function to callback to our server that the transcription is done (JobTitle included).
+    // Using JobTitle we can continue to use AWS SDK to look up that JobTitle/ID and get results
+    // for storage. -Lawrence
 }
 
 main();
