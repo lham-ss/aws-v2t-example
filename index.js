@@ -51,7 +51,7 @@ let transcribeUri = async (uri) => {
             Media: { 
               MediaFileUri: uri,
             },
-            TranscriptionJobName: 'TestJob11',
+            TranscriptionJobName: shortId.generate(),
             MediaFormat: 'wav',
         }
 
@@ -90,7 +90,7 @@ async function main() {
     // when the transcription job is complete Transcribe issues event that triggers our Lambda
     // function to callback to our server that the transcription is done (JobTitle included).
     // Using JobTitle we can continue to use AWS SDK to look up that JobTitle/ID and get results
-    // for storage. -Lawrence
+    // for storage in our waiting web-hook. -Lawrence
 }
 
 main();
