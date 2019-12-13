@@ -129,3 +129,20 @@ async function main() {
 }
 
 main();
+
+/*
+
+AWS Lambda Event Triggered...                   
+{ version: '0',                                 
+  id: 'd7f6bbe2-ccec-7886-921c-588496e56151',   
+  'detail-type': 'Transcribe Job State Change', 
+  source: 'aws.transcribe',                     
+  account: '329121181802',                      
+  time: '2019-12-13T19:39:49Z',                 
+  region: 'us-east-2',                          
+  resources: [],                                
+  detail:                                       
+   { TranscriptionJobName: 'AmKzVG21',          
+     TranscriptionJobStatus: 'COMPLETED' } }    
+
+*/
