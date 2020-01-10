@@ -1,3 +1,5 @@
+// lham @2019
+
 require('dotenv').config();
 
 const fs = require('fs');
@@ -131,8 +133,8 @@ async function main() {
 main();
 
 /*
+This is what the Lamba function sends to our https server on port 8051 for processing and clean-up
 
-AWS Lambda Event Triggered...                   
 { version: '0',                                 
   id: 'd7f6bbe2-ccec-7886-921c-588496e56151',   
   'detail-type': 'Transcribe Job State Change', 
