@@ -64,7 +64,7 @@ let downloadWav = async (wavUri, outputFilename) => {
 
     let wavBuffer = await request.get({uri: wavUri, encoding: null});       
                                                                             
-    console.log(`Saving wav download to ${outputFilename}`);
+    console.log(`Saving wav download to: ${outputFilename}`);
                                                                             
     fs.writeFileSync(outputFilename, wavBuffer);                                
 }
