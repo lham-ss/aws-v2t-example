@@ -62,14 +62,14 @@ let uploadFileToS3Bucket = async (fileName) => {
 let downloadWav = async (wavUri, outputFilename) => {
     console.log(`Downloading target WAV file: ${wavUri}...`);
 
-    let wavBuffer = await request.get({uri: wavUri, encoding: null});       
+    let wavBuffer = await request.get({ uri: wavUri, encoding: null });       
                                                                             
     console.log(`Saving wav download to: ${outputFilename}`);
                                                                             
     fs.writeFileSync(outputFilename, wavBuffer);                                
 }
 
-let transcribeUri = async (uri, job_name) => {
+let sumbitAWSTranscribeJob = async (uri, job_name) => {
     return new Promise((resolve, reject) => {
 
         let params = {
@@ -126,7 +126,7 @@ async function main() {
             console.trace(e);
         })
 
-    ret = await transcribeUri(S3Uri, jobName)
+    ret = await sumbitAWSTranscribeJob(S3Uri, jobName)
                 .catch((e) => { console.log(e) });
 
     let jobId = ret.TranscriptionJob.TranscriptionJobName;
@@ -148,7 +148,7 @@ async function main() {
         console.log('We are done...');
     }
 
-    // Note: This does not return the transcription results.
+    // Note: This does not synchronously return the transcription results. This flow has left this script.
     //
     // Lamba Function created (in AWS) to wait for a CloudWatch event (this must also be set up)
     // When the transcription job is complete Transcribe issues an event that triggers our Lambda
