@@ -23,12 +23,10 @@ const V2TSchema = new mongoose.Schema({
         default: null, 
     },
 
-    /*
     message_id: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'messages'
     },
-    */
 
 })
 
