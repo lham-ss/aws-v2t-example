@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/lham-ss/aws-v2t-example#readme",
   "dependencies": {
-    "aws-sdk": "^2.587.0",
+    "aws-sdk": "^2.814.0",
     "commander": "^4.1.0",
     "dotenv": "^8.2.0",
     "mongoose": "^5.8.0",
